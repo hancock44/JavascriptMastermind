@@ -1,29 +1,29 @@
 #gameMessage {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  width: 8em
 }
 
 #previousGuesses {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  width: 8em
 }
 
 #correctness {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  width: 8em
 }
 
 #guessContainer {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  width: 8em
 }
 
 #header {
+  max-width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  width: 8em
 }
