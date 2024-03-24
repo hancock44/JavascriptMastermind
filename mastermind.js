@@ -45,13 +45,27 @@ class UI {
 
     displayMessage(message) {
         // Display message on the UI
+        const messageElement = document.createElement('div');
+        messageElement.innerText = message;
+        this.gameContainer.appendChild(messageElement);
     }
 
     displayGameBoard() {
         // Display game board on the UI
+        const boardElement = document.createElement('div');
+        boardElement.innerHTML = `
+            <input type="text" id="guessInput" placeholder="Enter your guess">
+            <button id="guessButton">Guess</button>
+        `;
+        this.gameContainer.appendChild(boardElement);
+        const guessInput = document.getElementById('guessInput');
+        const guessButton = document.getElementById('guessButton');
+        guessButton.addEventListener('click', () => {
+            const guess = guessInput.value;
+            // Validate and process the guess
+        });
     }
 
-    // Other UI related methods...
 }
 
 class Game {
@@ -66,10 +80,11 @@ class Game {
         this.ui.displayMessage('Welcome to Mastermind! Try to guess the colors! There are four same/different colors in each code (red, blue, green, yellow, purple, orange). Guess it in under ten guesses and you win! * means correct color but wrong loaction. ^ means correct color and location. X means wrong color and wrong location. Have fun!';
     }
 
-    // Other game related methods...
 }
 
-// Bootstrap the game
-const game = new Game();
-game.start();
+function play() {
+    const game = new Game();
+    game.start();
+}
 
+play()
