@@ -4,34 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mastermind Game</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="mastermind.css">
-    <style>
-        /* Add custom styles here if needed */
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- You can create a CSS file for styling -->
 </head>
 <body>
-    <div class="container">
-        <h1 class="mt-5 text-center">Mastermind Game</h1>
-        <div class="row justify-content-center mt-5">
-            <div class="col-auto">
-                <div class="form-group">
-                    <label for="guess">Enter your guess:</label>
-                    <input type="text" id="guess" class="form-control" maxlength="4" size="4" autocomplete="off">
-                </div>
-                <button id="checkGuess" class="btn btn-primary">Check Guess</button>
-            </div>
-        </div>
-        <div class="row justify-content-center mt-3">
-            <div class="col-auto">
-                <div id="feedback" class="text-center"></div>
-                <div id="gameMessage" class="mt-3 text-center"></div>
-            </div>
-        </div>
+    <div id="gameMessage"></div>
+    <div id="correctness"></div>
+    <div id="guessContainer">
+        <input type="text" class="guess-input" placeholder="Color 1">
+        <input type="text" class="guess-input" placeholder="Color 2">
+        <input type="text" class="guess-input" placeholder="Color 3">
+        <input type="text" class="guess-input" placeholder="Color 4">
+        <button id="checkGuess">Check</button>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="mastermind.js"></script>
+    <script src="script.js"></script> <!-- Make sure to link your JavaScript file -->
 </body>
 </html>
+
 
