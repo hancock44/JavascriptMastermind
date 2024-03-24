@@ -9,7 +9,7 @@ class Mastermind {
     }
 
     generateSecretCode() {
-        // Generate a random secret code
+        // Generate a random color code
         const code = [];
         const colors = ['red', 'blue', 'green', 'yellow', 'brown', 'purple'];
         for (let i = 0; i < 4; i++) {
