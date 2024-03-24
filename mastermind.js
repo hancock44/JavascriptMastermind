@@ -128,7 +128,7 @@ class Game {
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
         if (result === 'win') {
-            this.ui.displayMessage('You win! Great job guessing the correct code: ' + this.mastermind.secretCode.join(', '));
+            this.ui.displayMessage('You win! Great job guessing the correct code: ' + this.mastermind.secretCode.join(', ') + '. Reload to play again!');
         } else if (result === 'lose') {
             this.ui.displayMessage('Game Over! No more attempts left... the correct answer was: ' + this.mastermind.secretCode.join(', '));
         } else {
