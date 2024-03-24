@@ -46,7 +46,7 @@ class Mastermind {
             }
         }
 
-        // Reset after guess
+        // Reset and check game status after guess
         this.currentAttempt++;
         this.guessList.push({ guess: guess.join(', '), correctness: `*${this.correctColors} ^${this.correctPositions}` });
 
