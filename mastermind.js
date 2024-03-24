@@ -4,6 +4,8 @@ class Mastermind {
         this.maxAttempts = 10;
         this.currentAttempt = 0;
         this.guessList = [];
+        this.correctPositions = 0; // Track correct positions
+        this.correctColors = 0; // Track correct colors in wrong positions
     }
 
     generateSecretCode() {
@@ -17,39 +19,39 @@ class Mastermind {
     }
 
     checkGuess(guess) {
-        // Check the guess against the secret code
-        let correctPositions = 0;
-        let correctColors = 0;
-    
+        // Reset correct positions and colors
+        this.correctPositions = 0;
+        this.correctColors = 0;
+
         // Arrays to keep track of correct colors in right position and correct colors in wrong position
         const checkedPositions = [];
         const checkedColors = [];
-    
+
         // First pass to check for correct colors in right positions
         for (let i = 0; i < this.secretCode.length; i++) {
             if (guess[i] === this.secretCode[i]) {
-                correctPositions++;
+                this.correctPositions++;
                 checkedPositions.push(i);
             }
         }
-    
+
         // Second pass to check for correct colors in wrong positions
         for (let i = 0; i < guess.length; i++) {
             if (!checkedPositions.includes(i)) {
                 const codeIndex = this.secretCode.indexOf(guess[i]);
                 if (codeIndex !== -1 && !checkedColors.includes(codeIndex)) {
-                    correctColors++;
+                    this.correctColors++;
                     checkedColors.push(codeIndex);
                 }
             }
         }
-    
+
         // Display feedback on UI
-        document.getElementById('correctness').textContent = '*'.repeat(correctColors) + '^'.repeat(correctPositions);
-    
+        document.getElementById('correctness').textContent = '*'.repeat(this.correctColors) + '^'.repeat(this.correctPositions);
+
         // Update game state
         this.currentAttempt++;
-        if (correctPositions === 4) {
+        if (this.correctPositions === 4) {
             return 'win';
         } else if (this.currentAttempt >= this.maxAttempts) {
             return 'lose';
@@ -60,7 +62,8 @@ class Mastermind {
 }
 
 class UI {
-    constructor() {
+    constructor(mastermind) {
+        this.mastermind = mastermind;
         this.uiElements = {
             guessInputs: document.querySelectorAll('.guess-input'),
             checkButton: document.getElementById('checkGuess'),
@@ -90,18 +93,24 @@ class UI {
         // Display feedback on the UI
         this.uiElements.feedbackContainer.textContent = feedback;
     }
+
+    displayCorrectness() {
+        // Display the correctness of the guess on the UI
+        const feedback = '*'.repeat(this.mastermind.correctColors) + '^'.repeat(this.mastermind.correctPositions);
+        this.displayFeedback(feedback);
+    }
 }
 
 class Game {
     constructor() {
         this.mastermind = new Mastermind();
-        this.ui = new UI();
+        this.ui = new UI(this.mastermind);
     }
 
     start() {
         // Game initialization
         this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
-        this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess());
+        this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess()); // Add event listener to the Check button
     }
 
     checkGuess() {
@@ -114,6 +123,7 @@ class Game {
             this.ui.displayMessage('Game Over! No more attempts left... the correct answer was: ' + this.mastermind.secretCode.join(', '));
         } else {
             this.ui.displayFeedback('Guesses left: ' + (this.mastermind.maxAttempts - this.mastermind.currentAttempt));
+            this.ui.displayCorrectness(); // Update the correctness feedback
             this.ui.clearInputs();
         }
     }
@@ -126,6 +136,7 @@ function play() {
 
 // Start the game when the document is loaded
 document.addEventListener('DOMContentLoaded', play);
+
 
 
 
