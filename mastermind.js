@@ -13,7 +13,7 @@ class Mastermind {
         const code = [];
         const colors = ['red', 'blue', 'green', 'yellow', 'brown', 'purple'];
         for (let i = 0; i < 4; i++) {
-            code[i] = colors[Math.floor(Math.random() * colors.length)]; // Fixed the random color selection
+            code[i] = colors[Math.floor(Math.random() * colors.length)];
         }
         return code;
     }
@@ -35,7 +35,7 @@ class Mastermind {
             }
         }
 
-        // Second pass to check for correct colors in wrong positions
+        // Check for correct colors in wrong positions
         for (let i = 0; i < guess.length; i++) {
             if (!checkedPositions.includes(i)) {
                 const codeIndex = this.secretCode.indexOf(guess[i]);
@@ -46,7 +46,7 @@ class Mastermind {
             }
         }
 
-        // Update game state
+        // Reset after guess
         this.currentAttempt++;
         this.guessList.push({ guess: guess.join(', '), correctness: `*${this.correctColors} ^${this.correctPositions}` });
 
@@ -78,12 +78,12 @@ class UI {
     }
 
     clearInputs() {
-        // Clear input fields after checking guess
+        // Clear inputs after checking guess
         this.uiElements.guessInputs.forEach(input => input.value = '');
     }
 
     getGuess() {
-        // Get the guess from the input fields
+        // Get the guess from inputs
         const guess = [];
         this.uiElements.guessInputs.forEach(input => guess.push(input.value.toLowerCase())); // Convert to lowercase for consistency
         return guess;
@@ -95,7 +95,7 @@ class UI {
     }
 
     displayCorrectness() {
-        // Display the correctness of the guess on the UI
+        // Display the correctness of a guess on the UI
         const feedback = '*'.repeat(this.mastermind.correctColors) + '^'.repeat(this.mastermind.correctPositions);
         this.displayFeedback(feedback);
     }
@@ -118,13 +118,13 @@ class Game {
     }
 
     start() {
-        // Game initialization
+        // Start up game
         this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
         this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess()); // Add event listener to the Check button
     }
 
     checkGuess() {
-        // Check the guess and update UI accordingly
+        // Check the guess and update UI
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
         if (result === 'win') {
@@ -145,7 +145,7 @@ function play() {
     game.start();
 }
 
-// Start the game when the document is loaded
+// Start the game when website opened or reloaded
 document.addEventListener('DOMContentLoaded', play);
 
 
