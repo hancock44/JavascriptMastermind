@@ -6,19 +6,32 @@
     <title>Mastermind Game</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="mastermind.js"></script>
+    <style>
+        /* Add custom styles here if needed */
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Mastermind Game</h1>
-        <input id="place1"></input>
-        <input id="place2"></input>
-        <input id="place3"></input>
-        <input id="place4"></input>
-        <button id="checkGuess">Check Guess</button>
-        <div id="correctness"></div>
-        <div id="gameMessage"></div>
+        <h1 class="mt-5 text-center">Mastermind Game</h1>
+        <div class="row justify-content-center mt-5">
+            <div class="col-auto">
+                <div class="form-group">
+                    <label for="guess">Enter your guess:</label>
+                    <input type="text" id="guess" class="form-control" maxlength="4" size="4" autocomplete="off">
+                </div>
+                <button id="checkGuess" class="btn btn-primary">Check Guess</button>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-auto">
+                <div id="feedback" class="text-center"></div>
+                <div id="gameMessage" class="mt-3 text-center"></div>
+            </div>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="mastermind.js"></script>
 </body>
 </html>
+
