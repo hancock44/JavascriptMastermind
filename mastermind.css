@@ -1,1 +1,29 @@
+#gameMessage {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
 
+#previousGuesses {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
+
+#correctness {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
+
+#guessContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
+
+#header {
+  margin-left: auto;
+  margin-right: auto;
+  width: 8em
+}
