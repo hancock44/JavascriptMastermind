@@ -38,8 +38,8 @@ class Mastermind {
                 correctColors++;
             }
         }
-        document.getElementById('correctnessMessage') = ('*' * correctColors) + ('^' * correctPositions)
-        return { correctColors, correctPositions };
+        document.getElementById('correctnessMessage') = ('*' * correctColors) + ('^' * correctPositions);
+        this.isGameOver(correctColors)
     }
 
     isGameOver(correctColors) {
@@ -78,6 +78,7 @@ class Game {
     start() {
         // Game initialization
         this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
+        
     }
     
 }
@@ -85,11 +86,6 @@ class Game {
 function play() {
     const game = new Game();
     game.start();
-    done = false;
-    while not done {
-        
     }
 }
-
-play(); // Call the play function to start the game
 
