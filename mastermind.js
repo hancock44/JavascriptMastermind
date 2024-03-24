@@ -46,11 +46,10 @@ class Mastermind {
             }
         }
 
-        // Display feedback on UI
-        document.getElementById('correctness').textContent = '*'.repeat(this.correctColors) + '^'.repeat(this.correctPositions);
-
         // Update game state
         this.currentAttempt++;
+        this.guessList.push({ guess: guess.join(', '), correctness: `*${this.correctColors} ^${this.correctPositions}` });
+
         if (this.correctPositions === 4) {
             return 'win';
         } else if (this.currentAttempt >= this.maxAttempts) {
@@ -68,7 +67,8 @@ class UI {
             guessInputs: document.querySelectorAll('.guess-input'),
             checkButton: document.getElementById('checkGuess'),
             messageContainer: document.getElementById('gameMessage'),
-            feedbackContainer: document.getElementById('correctness')
+            feedbackContainer: document.getElementById('correctness'),
+            previousGuessesContainer: document.getElementById('previousGuesses')
         };
     }
 
@@ -99,6 +99,16 @@ class UI {
         const feedback = '*'.repeat(this.mastermind.correctColors) + '^'.repeat(this.mastermind.correctPositions);
         this.displayFeedback(feedback);
     }
+
+    displayPreviousGuesses() {
+        // Display all previous guesses and their correctness
+        this.uiElements.previousGuessesContainer.innerHTML = '';
+        this.mastermind.guessList.forEach(item => {
+            const guessElement = document.createElement('div');
+            guessElement.textContent = `${item.guess} - ${item.correctness}`;
+            this.uiElements.previousGuessesContainer.appendChild(guessElement);
+        });
+    }
 }
 
 class Game {
@@ -124,6 +134,7 @@ class Game {
         } else {
             this.ui.displayFeedback('Guesses left: ' + (this.mastermind.maxAttempts - this.mastermind.currentAttempt));
             this.ui.displayCorrectness(); // Update the correctness feedback
+            this.ui.displayPreviousGuesses(); // Display previous guesses
             this.ui.clearInputs();
         }
     }
@@ -136,6 +147,7 @@ function play() {
 
 // Start the game when the document is loaded
 document.addEventListener('DOMContentLoaded', play);
+
 
 
 
