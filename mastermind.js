@@ -18,17 +18,36 @@ class Mastermind {
 
     checkGuess(guess) {
         // Check the guess against the secret code
-        let correctColors = 0;
         let correctPositions = 0;
-
+        let correctColors = 0;
+    
+        // Arrays to keep track of correct colors in right position and correct colors in wrong position
+        const checkedPositions = [];
+        const checkedColors = [];
+    
+        // First pass to check for correct colors in right positions
         for (let i = 0; i < this.secretCode.length; i++) {
             if (guess[i] === this.secretCode[i]) {
                 correctPositions++;
-            } else if (this.secretCode.includes(guess[i])) {
-                correctColors++;
+                checkedPositions.push(i);
             }
         }
+    
+        // Second pass to check for correct colors in wrong positions
+        for (let i = 0; i < guess.length; i++) {
+            if (!checkedPositions.includes(i)) {
+                const codeIndex = this.secretCode.indexOf(guess[i]);
+                if (codeIndex !== -1 && !checkedColors.includes(codeIndex)) {
+                    correctColors++;
+                    checkedColors.push(codeIndex);
+                }
+            }
+        }
+    
+        // Display feedback on UI
         document.getElementById('correctness').textContent = '*'.repeat(correctColors) + '^'.repeat(correctPositions);
+    
+        // Update game state
         this.currentAttempt++;
         if (correctPositions === 4) {
             return 'win';
