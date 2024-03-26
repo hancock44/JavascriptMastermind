@@ -19,17 +19,19 @@
         <input type="text" class="guess-input" placeholder="Color 4">
         <button id="checkGuess">Check</button>
     </div>
-    <div id="paramaterContainer">
-        <label for="guesses">Amount of Guesses: </label>
-        <select name="guesses" id="numGuesses">
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-        </select>
+    <div class="dropdown">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Number of Guesses
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(4)">4</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(5)">5</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(6)">6</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(7)">7</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(8)">8</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(9)">9</button>
+        <button class="dropdown-item" type="button" onclick="getNumGuesses(10)">10</button> 
+      </div>
     </div>
 
     <script src="mastermind.js"></script>
