@@ -8,8 +8,9 @@ class Mastermind {
         this.correctColors = 0; // Track correct colors in wrong positions
     }
 
-    getNumGuesses(num) {
-        this.maxAttempts = num
+    getNumGuesses() {
+        selectElement = document.querySelector('#select1');
+        value = selectElement.value;
     }
     
     generateSecretCode() {
