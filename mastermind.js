@@ -10,8 +10,10 @@ class Mastermind {
 
     getNumGuesses() {
         var e = document.getElementById('numGuesses');
-        var value = e.value;
-        return value
+        var value = parseInt(e.value);
+        return value;
+}
+
     }
     
     generateSecretCode() {
