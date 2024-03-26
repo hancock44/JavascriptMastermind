@@ -52,7 +52,7 @@ class Mastermind {
 
         if (this.correctPositions === 4) {
             return 'win';
-        } else if (this.currentAttempt >= this.maxAttempts) {
+        } else if (this.currentAttempt >= document.getElementById('numGuesses') {
             return 'lose';
         } else {
             return 'continue';
