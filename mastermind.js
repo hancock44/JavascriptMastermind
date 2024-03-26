@@ -10,8 +10,6 @@ class Mastermind {
 
     getNumGuesses(num) {
         this.maxAttempts = num
-}
-
     }
     
     generateSecretCode() {
@@ -130,9 +128,6 @@ class Game {
     }
 
     checkGuess() {
-        // maxAttempts based on the selected value from the dropdown
-        this.mastermind.maxAttempts = this.mastermind.getNumGuesses();
-    
         // Check the guess and update UI
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
