@@ -1,7 +1,7 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = 10;
+        this.maxAttempts = document.getElementById('numGuesses');
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
@@ -52,7 +52,7 @@ class Mastermind {
 
         if (this.correctPositions === 4) {
             return 'win';
-        } else if (this.currentAttempt >= document.getElementById('numGuesses') {
+        } else if (this.currentAttempt >= this.maxAttempts) {
             return 'lose';
         } else {
             return 'continue';
