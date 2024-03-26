@@ -1,7 +1,7 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = this.getNumGuesses();
+        this.maxAttempts = 10;
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
