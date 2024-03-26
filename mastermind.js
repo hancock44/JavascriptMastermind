@@ -119,7 +119,7 @@ class Game {
 
     start() {
         // Start up game
-        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
+        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. Select from the drop down for the amount of guesses allowed.');
         this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess()); // Add event listener to the Check button
     }
 
