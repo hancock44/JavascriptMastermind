@@ -144,6 +144,8 @@ class Game {
             this.ui.displayCorrectness(); // Update the correctness feedback
             this.ui.displayPreviousGuesses(); // Display previous guesses
             this.ui.clearInputs();
+            // Increment currentAttempt
+            this.mastermind.currentAttempt++;
         }
     }
 }
