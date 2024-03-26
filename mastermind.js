@@ -1,13 +1,19 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = document.getElementById('numGuesses');
+        this.maxAttempts = this.getNumGuesses();
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
         this.correctColors = 0; // Track correct colors in wrong positions
     }
 
+    getNumGuesses() {
+        var e = document.getElementById('numGuesses');
+        var value = e.value;
+        return value
+    }
+    
     generateSecretCode() {
         // Generate a random color code
         const code = [];
