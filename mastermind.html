@@ -9,6 +9,20 @@
 </head>
 <body>
     <h1>Mastermind</h1>
+    <div id="Parameters">
+        
+        <label for="cars">Amount of Guesses:</label>
+        <select name="guessSelector" id="numGuesses">
+            <option onclick="getNumGuesses(4)" value="4">4</option>
+            <option onclick="getNumGuesses(5)" value="5">5</option>
+            <option onclick="getNumGuesses(6)" value="6">6</option>
+            <option onclick="getNumGuesses(7)" value="7">7</option>
+            <option onclick="getNumGuesses(8)" value="8">8</option>
+            <option onclick="getNumGuesses(9)" value="9">9</option>
+            <option onclick="getNumGuesses(10)" value="10">10</option>
+        </select>
+        <button id="playbutton" onclick="play()">Play</button>
+    </div>
     <div id="gameMessage"></div>
     <div id="previousGuesses"></div>
     <div id="correctness"></div>
@@ -19,16 +33,6 @@
         <input type="text" class="guess-input" placeholder="Color 4">
         <button id="checkGuess">Check</button>
     </div>
-    <label for="cars">Amount of Guesses:</label>
-    <select name="guessSelector" id="numGuesses">
-        <option onclick="getNumGuesses(4)" value="4">4</option>
-        <option onclick="getNumGuesses(5)" value="5">5</option>
-        <option onclick="getNumGuesses(6)" value="6">6</option>
-        <option onclick="getNumGuesses(7)" value="7">7</option>
-        <option onclick="getNumGuesses(8)" value="8">8</option>
-        <option onclick="getNumGuesses(9)" value="9">9</option>
-        <option onclick="getNumGuesses(10)" value="10">10</option>
-    </select>
 
     <script src="mastermind.js"></script>
 </body>
