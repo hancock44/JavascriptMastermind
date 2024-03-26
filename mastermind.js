@@ -132,9 +132,9 @@ class Game {
     }
 
     checkGuess() {
-        // Update maxAttempts based on the selected value from the dropdown
+        // maxAttempts based on the selected value from the dropdown
         this.mastermind.maxAttempts = this.mastermind.getNumGuesses();
-        
+    
         // Check the guess and update UI
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
@@ -147,9 +147,9 @@ class Game {
             this.ui.displayCorrectness(); // Update the correctness feedback
             this.ui.displayPreviousGuesses(); // Display previous guesses
             this.ui.clearInputs();
-            // Increment currentAttempt
-            this.mastermind.currentAttempt++;
         }
+        // Increment currentAttempt
+        this.mastermind.currentAttempt++;
     }
 }
 
