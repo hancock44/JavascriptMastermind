@@ -1,7 +1,7 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = 10;
+        this.maxAttempts = this.getNumGuesses();
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
@@ -11,7 +11,7 @@ class Mastermind {
     getNumGuesses() {
         selectElement = document.querySelector('#select1');
         value = selectElement.value;
-        this.maxAttempts = parseInt(value);
+        return parseInt(value);
     }
     
     generateSecretCode() {
@@ -131,7 +131,6 @@ class Game {
 
     checkGuess() {
         // Check the guess and update UI
-        this.mastermind.getNumGuesses();
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
         if (result === 'win') {
