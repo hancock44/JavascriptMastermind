@@ -151,6 +151,8 @@ function play() {
     game.start();
 }
 
+document.getElementById('playbutton').addEventListener('click', play);
+document.getElementById('checkGuess').addEventListener('click', checkGuess);
 
 
 
