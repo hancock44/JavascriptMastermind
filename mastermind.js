@@ -8,10 +8,8 @@ class Mastermind {
         this.correctColors = 0; // Track correct colors in wrong positions
     }
 
-    getNumGuesses() {
-        var selector = document.getElementById('numGuesses');
-        var value = parseInt(selector.value);
-        return value;
+    getNumGuesses(num) {
+        this.maxAttempts = num
 }
 
     }
