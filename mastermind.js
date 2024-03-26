@@ -9,8 +9,8 @@ class Mastermind {
     }
 
     getNumGuesses() {
-        var e = document.getElementById('numGuesses');
-        var value = parseInt(e.value);
+        var selector = document.getElementById('numGuesses');
+        var value = parseInt(selector.value);
         return value;
 }
 
