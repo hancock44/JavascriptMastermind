@@ -1,7 +1,6 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = this.getNumGuesses();
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
@@ -55,10 +54,11 @@ class Mastermind {
         // Reset and check game status after guess
         this.currentAttempt++;
         this.guessList.push({ guess: guess.join(', '), correctness: `*${this.correctColors} ^${this.correctPositions}` });
-
+        maxGuesses= this.getNumGuesses
+        
         if (this.correctPositions === 4) {
             return 'win';
-        } else if (this.currentAttempt >= this.maxAttempts) {
+        } else if (this.currentAttempt >= maxGuesses) {
             return 'lose';
         } else {
             return 'continue';
@@ -138,7 +138,6 @@ class Game {
         } else if (result === 'lose') {
             this.ui.displayMessage('Game Over! No more attempts left... the correct answer was: ' + this.mastermind.secretCode.join(', '));
         } else {
-            this.ui.displayFeedback('Guesses left: ' + (this.mastermind.maxAttempts - this.mastermind.currentAttempt));
             this.ui.displayCorrectness(); // Update the correctness feedback
             this.ui.displayPreviousGuesses(); // Display previous guesses
             this.ui.clearInputs();
