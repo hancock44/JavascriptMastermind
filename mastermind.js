@@ -1,18 +1,13 @@
 class Mastermind {
     constructor() {
         this.secretCode = this.generateSecretCode();
+        this.maxAttempts = 10;
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
         this.correctColors = 0; // Track correct colors in wrong positions
     }
 
-    getNumGuesses() {
-        selectElement = document.querySelector('#select1');
-        value = selectElement.value;
-        return parseInt(value);
-    }
-    
     generateSecretCode() {
         // Generate a random color code
         const code = [];
@@ -54,11 +49,10 @@ class Mastermind {
         // Reset and check game status after guess
         this.currentAttempt++;
         this.guessList.push({ guess: guess.join(', '), correctness: `*${this.correctColors} ^${this.correctPositions}` });
-        maxGuesses= this.getNumGuesses
-        
+
         if (this.correctPositions === 4) {
             return 'win';
-        } else if (this.currentAttempt >= maxGuesses) {
+        } else if (this.currentAttempt >= this.maxAttempts) {
             return 'lose';
         } else {
             return 'continue';
@@ -125,7 +119,7 @@ class Game {
 
     start() {
         // Start up game
-        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. Select from the drop down for the amount of guesses allowed.');
+        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
         this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess()); // Add event listener to the Check button
     }
 
@@ -138,12 +132,11 @@ class Game {
         } else if (result === 'lose') {
             this.ui.displayMessage('Game Over! No more attempts left... the correct answer was: ' + this.mastermind.secretCode.join(', '));
         } else {
+            this.ui.displayFeedback('Guesses left: ' + (this.mastermind.maxAttempts - this.mastermind.currentAttempt));
             this.ui.displayCorrectness(); // Update the correctness feedback
             this.ui.displayPreviousGuesses(); // Display previous guesses
             this.ui.clearInputs();
         }
-        // Increment currentAttempt
-        this.mastermind.currentAttempt++;
     }
 }
 
