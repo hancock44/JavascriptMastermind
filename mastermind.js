@@ -132,7 +132,7 @@ class Game {
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
         if (result === 'win') {
-            this.ui.displayMessage('You win! Great job guessing the correct code: ' + this.mastermind.secretCode.join(', ') + '. Hit play to play again!');
+            this.ui.displayMessage('You win! Great job guessing the correct code: ' + this.mastermind.secretCode.join(', ') + '. Reload to play again!');
         } else if (result === 'lose') {
             this.ui.displayMessage('Game Over! No more attempts left... the correct answer was: ' + this.mastermind.secretCode.join(', '));
         } else {
@@ -151,8 +151,8 @@ function play() {
     game.start();
 }
 
-document.getElementById('playbutton').addEventListener('click', play);
-document.getElementById('checkGuess').addEventListener('click', checkGuess);
+// Start the game when website opened or reloaded
+document.addEventListener('DOMContentLoaded', play);
 
 
 
