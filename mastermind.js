@@ -1,7 +1,7 @@
 class Mastermind {
-    constructor(maxAttempts) {
+    constructor() {
         this.secretCode = this.generateSecretCode();
-        this.maxAttempts = maxAttempts;
+        this.maxAttempts = 10;
         this.currentAttempt = 0;
         this.guessList = [];
         this.correctPositions = 0; // Track correct positions
@@ -68,8 +68,7 @@ class UI {
             checkButton: document.getElementById('checkGuess'),
             messageContainer: document.getElementById('gameMessage'),
             feedbackContainer: document.getElementById('correctness'),
-            previousGuessesContainer: document.getElementById('previousGuesses'),
-            maxAttemptsSelect: document.getElementById('maxAttempts') // Added reference to the maxAttempts select element
+            previousGuessesContainer: document.getElementById('previousGuesses')
         };
     }
 
@@ -110,28 +109,18 @@ class UI {
             this.uiElements.previousGuessesContainer.appendChild(guessElement);
         });
     }
-
-    // Function to handle change in max attempts
-    handleMaxAttemptsChange() {
-        const maxAttempts = parseInt(this.uiElements.maxAttemptsSelect.value);
-        this.mastermind.maxAttempts = maxAttempts;
-    }
 }
 
 class Game {
     constructor() {
-        const maxAttempts = parseInt(document.getElementById('maxAttempts').value);
-        this.mastermind = new Mastermind(maxAttempts);
+        this.mastermind = new Mastermind();
         this.ui = new UI(this.mastermind);
     }
 
     start() {
         // Start up game
-        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have ' + this.mastermind.maxAttempts + ' guesses total!');
+        this.ui.displayMessage('Welcome to the game Mastermind! Input a guess with a color in each box in order to try and get the correct code! The colors included are blue, red, green, yellow, purple, and brown. * - a correct color only, ^ - correct location for a color. You have 10 guesses total!');
         this.ui.uiElements.checkButton.addEventListener('click', () => this.checkGuess()); // Add event listener to the Check button
-
-        // Add event listener to max attempts select
-        this.ui.uiElements.maxAttemptsSelect.addEventListener('change', () => this.ui.handleMaxAttemptsChange());
     }
 
     checkGuess() {
@@ -158,6 +147,10 @@ function play() {
 
 // Start the game when website opened or reloaded
 document.addEventListener('DOMContentLoaded', play);
+
+
+
+
 
 
 
