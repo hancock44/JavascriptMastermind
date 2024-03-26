@@ -11,6 +11,7 @@ class Mastermind {
     getNumGuesses() {
         selectElement = document.querySelector('#select1');
         value = selectElement.value;
+        this.maxAttempts = parseInt(value);
     }
     
     generateSecretCode() {
@@ -130,6 +131,7 @@ class Game {
 
     checkGuess() {
         // Check the guess and update UI
+        this.mastermind.getNumGuesses();
         const guess = this.ui.getGuess();
         const result = this.mastermind.checkGuess(guess);
         if (result === 'win') {
