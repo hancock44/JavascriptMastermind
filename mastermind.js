@@ -151,9 +151,6 @@ function play() {
     game.start();
 }
 
-// Start the game when website opened or reloaded
-document.addEventListener('DOMContentLoaded', play);
-
 
 
 
